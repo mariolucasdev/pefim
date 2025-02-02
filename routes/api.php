@@ -11,5 +11,12 @@ Route::post('auth/login', [UserController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('categories', CategoryController::class);
+
     Route::apiResource('cards', CreditCardController::class);
+
+    Route::get('bank-logos', function () {
+        return request()
+            ->user()
+            ->bankLogos();
+    });
 });
