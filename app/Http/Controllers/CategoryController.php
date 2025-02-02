@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Actions\Category\DestroyCategoryAction;
-use App\Http\Actions\Category\ListCategoryAction;
-use App\Http\Actions\Category\ShowCategoryAction;
-use App\Http\Actions\Category\StoreCategoryAction;
-use App\Http\Actions\Category\UpdateCategoryAction;
-use App\Http\Requests\Category\StoreCategoryRequest;
-use App\Http\Requests\Category\UpdateCategoryRequest;
+use App\Http\Actions\Category\{
+    DestroyCategoryAction,
+    ListCategoryAction,
+    ShowCategoryAction,
+    StoreCategoryAction,
+    UpdateCategoryAction
+};
+use App\Http\Requests\Category\{
+    StoreCategoryRequest,
+    UpdateCategoryRequest
+};
 use Illuminate\Http\JsonResponse;
 
 class CategoryController extends Controller

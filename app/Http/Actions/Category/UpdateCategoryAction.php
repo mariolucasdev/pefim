@@ -3,8 +3,7 @@
 namespace App\Http\Actions\Category;
 
 use App\Http\Requests\Category\UpdateCategoryRequest;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Response;
+use Illuminate\Http\{JsonResponse, Response};
 
 class UpdateCategoryAction
 {
@@ -14,7 +13,7 @@ class UpdateCategoryAction
             ->categories()
             ->find($id);
 
-        if (! $category) {
+        if (!$category) {
             return response()->json([
                 'message' => 'Category not found',
             ], Response::HTTP_NOT_FOUND);

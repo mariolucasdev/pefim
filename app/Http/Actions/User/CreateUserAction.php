@@ -18,11 +18,11 @@ final class CreateUserAction
 
         $request->merge(['id' => $id]);
 
-        $user = User::create($request->all());
+        $user  = User::create($request->all());
         $token = $user->createToken($user->email)->plainTextToken;
 
         return response()->json([
-            'user' => $user,
+            'user'  => $user,
             'token' => $token,
         ], 201);
     }

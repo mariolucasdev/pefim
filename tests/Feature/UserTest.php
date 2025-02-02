@@ -2,9 +2,9 @@
 
 test('user can be created', function () {
     $response = $this->postJson('/api/user', [
-        'name' => fake()->name,
-        'email' => fake()->unique()->safeEmail,
-        'password' => 'password',
+        'name'             => fake()->name,
+        'email'            => fake()->unique()->safeEmail,
+        'password'         => 'password',
         'confirm_password' => 'password',
     ]);
 
@@ -21,12 +21,12 @@ test('user can be created', function () {
 
 test('user can be logged in', function () {
     $user = \App\Models\User::factory()->create([
-        'id' => fake()->uuid,
+        'id'       => fake()->uuid,
         'password' => bcrypt('password'),
     ]);
 
     $response = $this->postJson('/api/login', [
-        'email' => $user->email,
+        'email'    => $user->email,
         'password' => 'password',
     ]);
 

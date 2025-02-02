@@ -22,11 +22,11 @@ class StoreCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string',
+            'name'        => 'required|string',
             'description' => 'required|string',
-            'type' => 'required|in:income,expense',
-            'essential' => 'required|boolean',
-            'budget' => 'numeric',
+            'type'        => 'required|in:income,expense',
+            'essential'   => 'required|boolean',
+            'budget'      => 'numeric',
         ];
     }
 
@@ -35,19 +35,19 @@ class StoreCategoryRequest extends FormRequest
         return [
             'name' => [
                 'required' => 'O campo nome é obrigatório.',
-                'string' => 'O campo nome deve ser uma string.',
+                'string'   => 'O campo nome deve ser uma string.',
             ],
             'description' => [
                 'required' => 'O campo descrição é obrigatório.',
-                'string' => 'O campo descrição deve ser uma string.',
+                'string'   => 'O campo descrição deve ser uma string.',
             ],
             'type' => [
                 'required' => 'O campo tipo é obrigatório.',
-                'in' => 'O campo tipo deve ser income ou expense.',
+                'in'       => 'O campo tipo deve ser income ou expense.',
             ],
             'essential' => [
                 'required' => 'O campo essencial é obrigatório.',
-                'boolean' => 'O campo essencial deve ser um booleano.',
+                'boolean'  => 'O campo essencial deve ser um booleano.',
             ],
             'budget.numeric' => 'O campo orçamento deve ser um número.',
         ];

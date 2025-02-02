@@ -6,23 +6,24 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Ramsey\Uuid\Uuid;
 
-class Category extends Model
+class CreditCard extends Model
 {
     /**
-     * The attributes that are mass assignable.
+     * The table associated with the model.
      *
      * @var list<string>
      */
     protected $fillable = [
+        'id',
         'name',
-        'description',
-        'type',
-        'essential',
-        'budget',
+        'closing_day',
+        'due_day',
+        'limit',
+        'user_id',
     ];
 
     /**
-     * The attributes that should be cast.
+     * The attribute casts.
      *
      * @var array<string, string>
      */
@@ -31,21 +32,19 @@ class Category extends Model
     ];
 
     /**
-     * The "booting" method of the model.
+     * Get the user that owns the credit card.
      */
     protected static function boot()
     {
         parent::boot();
 
-        static::creating(function ($model) {
-            if (!$model->id) {
-                $model->id = Uuid::uuid4()->toString();
-            }
+        static::creating(function ($creditCard) {
+            $creditCard->id = Uuid::uuid4()->toString();
         });
     }
 
     /**
-     * Get the user that owns the category.
+     * Get the user that owns the credit card.
      */
     public function user(): BelongsTo
     {

@@ -13,7 +13,7 @@ class LoginUserAction
     {
         $authenticated = Auth::attempt($request->only('email', 'password'));
 
-        if (! $authenticated) {
+        if (!$authenticated) {
             return response()->json([
                 'message' => 'Unauthorized',
             ], 401);
@@ -26,7 +26,7 @@ class LoginUserAction
         $token = $user->createToken($user->email)->plainTextToken;
 
         return response()->json([
-            'user' => $user,
+            'user'  => $user,
             'token' => $token,
         ], 200);
     }

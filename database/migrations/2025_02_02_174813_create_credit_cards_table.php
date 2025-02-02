@@ -10,16 +10,17 @@ return new class () extends Migration {
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
-            $table->uuid('id');
+        Schema::create('credit_cards', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('name');
+            $table->integer('closing_day');
+            $table->integer('due_day');
+            $table->decimal('limit', 10, 2);
             $table->foreignId('user_id')
                 ->references('id')
-                ->on('users');
-            $table->string('name');
-            $table->string('description');
-            $table->enum('type', ['income', 'expense']);
-            $table->boolean('essential')->default(false);
-            $table->decimal('budget', 10, 2)->default(0);
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -29,10 +30,10 @@ return new class () extends Migration {
      */
     public function down(): void
     {
-        Schema::table('categories', function (Blueprint $table) {
+        Schema::table('credit_cards', function (Blueprint $table) {
             $table->dropConstrainedForeignId('user_id');
         });
 
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('credit_cards');
     }
 };

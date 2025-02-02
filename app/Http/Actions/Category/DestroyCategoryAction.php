@@ -2,8 +2,7 @@
 
 namespace App\Http\Actions\Category;
 
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Response;
+use Illuminate\Http\{JsonResponse, Response};
 
 class DestroyCategoryAction
 {
@@ -16,7 +15,7 @@ class DestroyCategoryAction
             ->categories()
             ->find($id);
 
-        if (! $category) {
+        if (!$category) {
             return response()->json([
                 'message' => 'Category not found',
             ], Response::HTTP_NOT_FOUND);
