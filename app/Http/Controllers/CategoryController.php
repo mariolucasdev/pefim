@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Http\Actions\Category\{
+    DestroyCategoryAction,
     ListCategoryAction,
     ShowCategoryAction,
     StoreCategoryAction,
     UpdateCategoryAction
 };
 use App\Http\Requests\Category\{StoreCategoryRequest, UpdateCategoryRequest};
+use App\Models\Category;
+use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response as HttpResponse;
 
 class CategoryController extends Controller
 {
@@ -48,8 +52,8 @@ class CategoryController extends Controller
     /**
      * Remove the specified category from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id): JsonResponse
     {
-        //
+        return DestroyCategoryAction::execute($id);
     }
 }
