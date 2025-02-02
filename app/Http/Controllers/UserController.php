@@ -2,16 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Actions\User\{
-    CreateUserAction,
-    LoginUserAction
-};
-use App\Http\Requests\User\{
-    LoginUserRequest,
-    StoreUserRequest
-};
+use App\Http\Actions\User\CreateUserAction;
+use App\Http\Actions\User\LoginUserAction;
+use App\Http\Requests\User\LoginUserRequest;
+use App\Http\Requests\User\StoreUserRequest;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -20,7 +15,7 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request): JsonResponse
     {
-        return (new CreateUserAction())($request);
+        return CreateUserAction::execute($request);
     }
 
     /**
@@ -28,30 +23,6 @@ class UserController extends Controller
      */
     public function login(LoginUserRequest $request): JsonResponse
     {
-        return (new LoginUserAction())($request);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return LoginUserAction::execute($request);
     }
 }

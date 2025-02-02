@@ -3,7 +3,8 @@
 namespace App\Http\Actions\Category;
 
 use App\Http\Requests\Category\StoreCategoryRequest;
-use Illuminate\Http\{JsonResponse, Response};
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
 
 class StoreCategoryAction
 {

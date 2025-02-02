@@ -2,7 +2,8 @@
 
 namespace App\Http\Actions\Category;
 
-use Illuminate\Http\{JsonResponse, Response};
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
 
 class DestroyCategoryAction
 {
@@ -17,14 +18,14 @@ class DestroyCategoryAction
 
         if (! $category) {
             return response()->json([
-                'message' => 'Category not found'
+                'message' => 'Category not found',
             ], Response::HTTP_NOT_FOUND);
         }
 
         $category->delete();
 
         return response()->json([
-            'message' => 'Category deleted successfully'
+            'message' => 'Category deleted successfully',
         ], Response::HTTP_OK);
     }
 }

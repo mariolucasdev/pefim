@@ -2,18 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Actions\Category\{
-    DestroyCategoryAction,
-    ListCategoryAction,
-    ShowCategoryAction,
-    StoreCategoryAction,
-    UpdateCategoryAction
-};
-use App\Http\Requests\Category\{StoreCategoryRequest, UpdateCategoryRequest};
-use App\Models\Category;
-use GuzzleHttp\Psr7\Response;
+use App\Http\Actions\Category\DestroyCategoryAction;
+use App\Http\Actions\Category\ListCategoryAction;
+use App\Http\Actions\Category\ShowCategoryAction;
+use App\Http\Actions\Category\StoreCategoryAction;
+use App\Http\Actions\Category\UpdateCategoryAction;
+use App\Http\Requests\Category\StoreCategoryRequest;
+use App\Http\Requests\Category\UpdateCategoryRequest;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Response as HttpResponse;
 
 class CategoryController extends Controller
 {

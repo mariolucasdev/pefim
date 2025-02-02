@@ -8,14 +8,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Ramsey\Uuid\Uuid;
 
 class User extends Authenticatable
 {
+    use HasApiTokens;
+
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
     use Notifiable;
-    use HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -23,7 +23,6 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'id',
         'name',
         'email',
         'password',
@@ -47,7 +46,6 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
-            'id' => 'string',
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];

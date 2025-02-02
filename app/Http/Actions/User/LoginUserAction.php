@@ -9,25 +9,25 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginUserAction
 {
-    public function __invoke(LoginUserRequest $request): JsonResponse
+    public static function execute(LoginUserRequest $request): JsonResponse
     {
-        $authenticated = Auth::attempt(
-            $request->only('email', 'password'),
-            true
-        );
+        $authenticated = Auth::attempt($request->only('email', 'password'));
 
         if (! $authenticated) {
             return response()->json([
-                'message' => 'Unauthorized'
+                'message' => 'Unauthorized',
             ], 401);
         }
 
+        /** @var User $user */
         $user = Auth::user();
-        $user = User::find($user->id);
 
         $user->tokens()->delete();
-        $user->token = $user->createToken($user->id)->plainTextToken;
+        $token = $user->createToken($user->email)->plainTextToken;
 
-        return response()->json($user, 200);
+        return response()->json([
+            'user' => $user,
+            'token' => $token,
+        ], 200);
     }
 }

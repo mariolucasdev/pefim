@@ -10,12 +10,12 @@ test('user can be created', function () {
 
     $response->assertStatus(201)
         ->assertJsonStructure([
-            "name",
-            "email",
-            "id",
-            "updated_at",
-            "created_at",
-            "token",
+            'name',
+            'email',
+            'id',
+            'updated_at',
+            'created_at',
+            'token',
         ]);
 });
 
@@ -32,11 +32,11 @@ test('user can be logged in', function () {
 
     $response->assertStatus(200)
         ->assertJsonStructure([
-            "name",
-            "email",
-            "id",
-            "updated_at",
-            "created_at",
-            "token",
+            'name',
+            'email',
+            'id',
+            'updated_at',
+            'created_at',
+            'token',
         ]);
 });

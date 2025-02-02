@@ -2,7 +2,8 @@
 
 namespace App\Http\Actions\Category;
 
-use Illuminate\Http\{JsonResponse, Response};
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
 
 class ShowCategoryAction
 {
