@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Actions\Category\{
     ListCategoryAction,
     ShowCategoryAction,
-    StoreCategoryAction
+    StoreCategoryAction,
+    UpdateCategoryAction
 };
-use App\Http\Requests\Category\StoreCategoryRequest;
-use Illuminate\Http\{Request, JsonResponse};
+use App\Http\Requests\Category\{StoreCategoryRequest, UpdateCategoryRequest};
+use Illuminate\Http\JsonResponse;
 
 class CategoryController extends Controller
 {
@@ -39,9 +40,9 @@ class CategoryController extends Controller
     /**
      * Update the specified category in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateCategoryRequest $request, string $id)
     {
-        //
+        return UpdateCategoryAction::execute($request, $id);
     }
 
     /**
