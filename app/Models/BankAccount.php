@@ -21,6 +21,20 @@ class BankAccount extends Model
         'current_balance',
     ];
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'id' => 'string',
+        'initial_balance' => 'float',
+        'current_balance' => 'float',
+    ];
+
+    /**
+     * The "booting" method of the model.
+     */
     protected static function boot()
     {
         parent::boot();

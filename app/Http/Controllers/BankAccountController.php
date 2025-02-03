@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Actions\BankAccount\ListBankAccountAction;
 use App\Http\Actions\BankAccount\StoreBankAccountAction;
 use App\Http\Requests\BankAccount\StoreBankAccountRequest;
 use Illuminate\Http\JsonResponse;
@@ -12,9 +13,9 @@ class BankAccountController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        //
+        return ListBankAccountAction::execute();
     }
 
     /**
