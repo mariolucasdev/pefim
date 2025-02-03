@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{CategoryController, CreditCardController, UserController};
+use App\Http\Controllers\{BankAccountController, CategoryController, CreditCardController, UserController};
 use Illuminate\Support\Facades\Route;
 
 Route::post('/users', [UserController::class, 'store']);
@@ -11,8 +11,8 @@ Route::post('auth/login', [UserController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('categories', CategoryController::class);
-
     Route::apiResource('cards', CreditCardController::class);
+    Route::apiResource('bank-accounts', BankAccountController::class);
 
     Route::get('bank-logos', function () {
         return request()

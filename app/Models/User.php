@@ -69,6 +69,14 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the user's bank accounts.
+     */
+    public function BankAccounts(): HasMany
+    {
+        return $this->hasMany(BankAccount::class);
+    }
+
+    /**
      * Get the user's bank logos.
      */
     public function bankLogos(): Collection
