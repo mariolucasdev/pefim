@@ -2,15 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Actions\BankAccount\DestroyBankAccountAction;
-use App\Http\Actions\BankAccount\ListBankAccountAction;
-use App\Http\Actions\BankAccount\ShowBankAccountAction;
-use App\Http\Actions\BankAccount\StoreBankAccountAction;
-use App\Http\Actions\BankAccount\UpdateBankAccountAction;
-use App\Http\Requests\BankAccount\StoreBankAccountRequest;
-use App\Http\Requests\BankAccount\UpdateBankAccountRequest;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
+use App\Http\Actions\BankAccount\{DestroyBankAccountAction, ListBankAccountAction, ShowBankAccountAction, StoreBankAccountAction, UpdateBankAccountAction};
+use App\Http\Requests\BankAccount\{StoreBankAccountRequest, UpdateBankAccountRequest};
+use Illuminate\Http\{JsonResponse};
 
 class BankAccountController extends Controller
 {

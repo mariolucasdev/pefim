@@ -1,16 +1,15 @@
 <?php
 
-use App\Models\Category;
-use App\Models\User;
+use App\Models\{Category, User};
 use Laravel\Sanctum\Sanctum;
 
 test('category can not be created without auth', function () {
     $response = $this->postJson('/api/categories', [
-        'name' => fake()->name,
+        'name'        => fake()->name,
         'description' => fake()->sentence,
-        'type' => 'expense',
-        'essential' => true,
-        'budget' => 1000,
+        'type'        => 'expense',
+        'essential'   => true,
+        'budget'      => 1000,
     ]);
 
     $response->assertStatus(401);
@@ -30,11 +29,11 @@ test('category can be created', function () {
     Sanctum::actingAs(User::factory()->create());
 
     $response = $this->postJson('/api/categories', [
-        'name' => fake()->name,
+        'name'        => fake()->name,
         'description' => fake()->sentence,
-        'type' => 'expense',
-        'essential' => true,
-        'budget' => 1000,
+        'type'        => 'expense',
+        'essential'   => true,
+        'budget'      => 1000,
     ]);
 
     $response->assertStatus(201)
@@ -76,11 +75,11 @@ test('category can be shown', function () {
     Sanctum::actingAs(User::factory()->create());
 
     $response = $this->postJson('/api/categories', [
-        'name' => fake()->name,
+        'name'        => fake()->name,
         'description' => fake()->sentence,
-        'type' => 'expense',
-        'essential' => true,
-        'budget' => 1000,
+        'type'        => 'expense',
+        'essential'   => true,
+        'budget'      => 1000,
     ]);
 
     $category = Category::all()->last();
@@ -104,21 +103,21 @@ test('category can be updated', function () {
     Sanctum::actingAs(User::factory()->create());
 
     $response = $this->postJson('/api/categories', [
-        'name' => fake()->name,
+        'name'        => fake()->name,
         'description' => fake()->sentence,
-        'type' => 'expense',
-        'essential' => true,
-        'budget' => 1000,
+        'type'        => 'expense',
+        'essential'   => true,
+        'budget'      => 1000,
     ]);
 
     $category = Category::all()->last();
 
     $response = $this->putJson("/api/categories/{$category->id}", [
-        'name' => fake()->name,
+        'name'        => fake()->name,
         'description' => fake()->sentence,
-        'type' => 'income',
-        'essential' => false,
-        'budget' => 2000,
+        'type'        => 'income',
+        'essential'   => false,
+        'budget'      => 2000,
     ]);
 
     $response->assertStatus(200)
@@ -139,11 +138,11 @@ test('category can be deleted', function () {
     Sanctum::actingAs(User::factory()->create());
 
     $response = $this->postJson('/api/categories', [
-        'name' => fake()->name,
+        'name'        => fake()->name,
         'description' => fake()->sentence,
-        'type' => 'expense',
-        'essential' => true,
-        'budget' => 1000,
+        'type'        => 'expense',
+        'essential'   => true,
+        'budget'      => 1000,
     ]);
 
     $category = Category::all()->last();

@@ -27,7 +27,7 @@ class BankAccount extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'id' => 'string',
+        'id'              => 'string',
         'initial_balance' => 'float',
         'current_balance' => 'float',
     ];

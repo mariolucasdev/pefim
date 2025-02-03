@@ -16,7 +16,7 @@ class UpdateBankAccountAction
 
         if (!$bankAccount) {
             return response()->json([
-                'message' => 'Bank account not found.'
+                'message' => 'Bank account not found.',
             ], Response::HTTP_NOT_FOUND);
         }
 
