@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Actions\BankAccount\DestroyBankAccountAction;
 use App\Http\Actions\BankAccount\ListBankAccountAction;
 use App\Http\Actions\BankAccount\ShowBankAccountAction;
 use App\Http\Actions\BankAccount\StoreBankAccountAction;
@@ -50,8 +51,8 @@ class BankAccountController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id): JsonResponse
     {
-        //
+        return DestroyBankAccountAction::execute($id);
     }
 }
