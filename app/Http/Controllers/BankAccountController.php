@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Actions\BankAccount\ListBankAccountAction;
+use App\Http\Actions\BankAccount\ShowBankAccountAction;
 use App\Http\Actions\BankAccount\StoreBankAccountAction;
+use App\Http\Actions\BankAccount\UpdateBankAccountAction;
 use App\Http\Requests\BankAccount\StoreBankAccountRequest;
+use App\Http\Requests\BankAccount\UpdateBankAccountRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -29,17 +32,19 @@ class BankAccountController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id): JsonResponse
     {
-        //
+        return ShowBankAccountAction::execute($id);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
+    public function update(
+        UpdateBankAccountRequest $request,
+        string $id
+    ): JsonResponse {
+        return UpdateBankAccountAction::execute($request, $id);
     }
 
     /**
